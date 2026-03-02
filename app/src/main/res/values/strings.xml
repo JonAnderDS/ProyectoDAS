@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ProyectoDAS</string>
+    <string name="login_titulo">Iniciar sesión</string>
+    <string name="login_usuario">Nombre de usuario</string>
+    <string name="login_passwd">Contraseña</string>
+    <string name="login_boton">Continuar</string>
+    <string name="error_usuario">El usuario no puede estar vacío</string>
+    <string name="error_passwd">La contraseña no puede estar vacía</string>
+</resources>

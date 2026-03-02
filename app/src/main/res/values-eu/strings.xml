@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DAS Proiektua</string>
+    <string name="login_titulo">Sesioa hasi</string>
+    <string name="login_usuario">Erabiltzaile izena</string>
+    <string name="login_passwd">Pasahitza sartu</string>
+    <string name="login_boton">Jarraitu</string>
+    <string name="error_usuario">Erabiltzailea ezin da hutsik egon</string>
+    <string name="error_passwd">Pasahitza ezin da hutsik egon</string>
+</resources>
