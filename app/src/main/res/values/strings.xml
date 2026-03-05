@@ -1,4 +1,12 @@
 <resources>
+    <!-- Repetidos -->
+    <string name="anadir">Añadir</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="solo">Sólo</string>
+    <string name="grupo">Grupo</string>
+    <string name="default_user">Usuario</string>
+
+    <!-- Log In -->
     <string name="app_name">ProyectoDAS</string>
     <string name="login_titulo">Iniciar sesión</string>
     <string name="login_usuario">Nombre de usuario</string>
@@ -6,4 +14,22 @@
     <string name="login_boton">Continuar</string>
     <string name="error_usuario">El usuario no puede estar vacío</string>
     <string name="error_passwd">La contraseña no puede estar vacía</string>
+
+
+    <!-- Main Activity -->
+    <string name="titulo_app">Inbento</string>
+    <string name="inicio">Inicio</string>
+    <string name="ajustes">Ajustes</string>
+
+    <!-- Añadir Viaje -->
+    <string name="titulo_anadir_viaje">Añadir viaje</string>
+    <string name="anadir_titulo_viaje">Introduce el título de tu próxima aventura</string>
+    <string name="anadir_sitio_viaje">¿Dónde viajarás?</string>
+    <string name="anadir_fecha_viaje">¿Cúando?</string>
+    <string name="falta_info_anadir_viaje">Llena este campo</string>
+
+    <!-- Ajustes -->
+    <string name="dark_mode">Modo oscuro</string>
+    <string name="select_language">Selecciona idioma</string>
+    <string name="display_name">Hizkuntza aukeratu</string>
 </resources>

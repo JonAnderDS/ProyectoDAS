@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Errepikatuta -->
+    <string name="anadir">Gehitu</string>
+    <string name="cancelar">Itxi</string>
+    <string name="solo">Bakarrik</string>
+    <string name="grupo">Taldean</string>
+    <string name="default_user">Erabiltzailea</string>
+
+    <!-- Log In -->
     <string name="app_name">DAS Proiektua</string>
     <string name="login_titulo">Sesioa hasi</string>
     <string name="login_usuario">Erabiltzaile izena</string>
@@ -7,4 +15,21 @@
     <string name="login_boton">Jarraitu</string>
     <string name="error_usuario">Erabiltzailea ezin da hutsik egon</string>
     <string name="error_passwd">Pasahitza ezin da hutsik egon</string>
+
+    <!-- Main Activity -->
+    <string name="titulo_app">Inbento</string>
+    <string name="inicio">Hasiera</string>
+    <string name="ajustes">Doikuntzak</string>
+
+    <!-- Gehitu bidaia -->
+    <string name="titulo_anadir_viaje">Gehitu bidaia</string>
+    <string name="anadir_titulo_viaje">Zure hurrengo abenturaren titulua ezarri</string>
+    <string name="anadir_sitio_viaje">Nora joango zara?</string>
+    <string name="anadir_fecha_viaje">Noiz?</string>
+    <string name="falta_info_anadir_viaje">Informazioa falta da</string>
+
+    <!-- Ajustes -->
+    <string name="dark_mode">Modo iluna</string>
+    <string name="select_language">Hizkuntza aukeratu</string>
+    <string name="display_name">Hizkuntza aukeratu</string>
 </resources>

@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Repeated -->
+    <string name="anadir">Add</string>
+    <string name="cancelar">Cancel</string>
+    <string name="solo">Solo</string>
+    <string name="grupo">Group</string>
+    <string name="default_user">User</string>
+
+    <!-- Log In -->
     <string name="app_name">DAS Proyect</string>
     <string name="login_titulo">Log in</string>
     <string name="login_usuario">Username</string>
@@ -7,4 +15,21 @@
     <string name="login_boton">Continue</string>
     <string name="error_usuario">Username cannot be empty</string>
     <string name="error_passwd">Password cannot be empty</string>
+
+    <!-- Main Activity -->
+    <string name="titulo_app">Inbento</string>
+    <string name="inicio">Home</string>
+    <string name="ajustes">Settings</string>
+
+    <!-- Add trip -->
+    <string name="titulo_anadir_viaje">Add trip</string>
+    <string name="anadir_titulo_viaje">Add the title to your next adventure</string>
+    <string name="anadir_sitio_viaje">Where are you going?</string>
+    <string name="anadir_fecha_viaje">When?</string>
+    <string name="falta_info_anadir_viaje">Information is missing</string>
+
+    <!-- Ajustes -->
+    <string name="dark_mode">Dark mode</string>
+    <string name="select_language">Select language</string>
+    <string name="display_name">Hizkuntza aukeratu</string>
 </resources>
