@@ -1,0 +1,10 @@
+PROYECTO: ProyectoDAS
+Versión: 1.0.0
+Desarrollador: Jon Ander Duque
+Asignatura: Desarrollo Avanzado de Software (DAS)
+
+Descripción:
+Esta aplicación ha sido desarrollada como parte de la primera evaluación individual. Permite la gestión local de viajes y equipajes, garantizando la persistencia de datos sin necesidad de conexión a internet.
+
+Escuela de Ingeniería de Bilbao (UPV/EHU)
+2026

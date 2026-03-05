@@ -1,0 +1,10 @@
+PROIEKTUA: ProyectoDAS
+Bertsioa: 1.0.0
+Garatzailea: Jon Ander Duque
+Irakasgaia: Software Garapen Aurreratua (DAS)
+
+Deskribapena:
+Aplikazio hau banakako lehen ebaluazioaren zati gisa garatu da. Bidaien eta maleten kudeaketa lokala ahalbidetzen du, datuen iraunkortasuna bermatuz interneteko konexiorik behar izan gabe.
+
+Bilboko Ingeniaritza Eskola (UPV/EHU)
+2026

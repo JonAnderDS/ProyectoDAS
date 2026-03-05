@@ -1,0 +1,10 @@
+PROJECT: ProyectoDAS
+Version: 1.0.0
+Developer: Jon Ander Duque
+Subject: Advanced Software Development (DAS)
+
+Description:
+This application was developed as part of the first individual evaluation. It allows for local management of trips and luggage, ensuring data persistence without requiring an internet connection.
+
+Bilbao School of Engineering (UPV/EHU)
+2026
