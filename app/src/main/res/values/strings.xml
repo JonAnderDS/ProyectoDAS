@@ -32,4 +32,9 @@
     <string name="dark_mode">Modo oscuro</string>
     <string name="select_language">Selecciona idioma</string>
     <string name="display_name">Hizkuntza aukeratu</string>
+
+
+    <string name="empty_trips">No tienes ningún viaje.\nPulsa el botón + para añadir uno.</string>
+    <string name="empty_luggage">No tienes maletas para este viaje.\nPulsa el botón + para crear una.</string>
+    <string name="empty_items">No hay objetos en esta maleta.\nPulsa el botón + para añadirlos.</string>
 </resources>
