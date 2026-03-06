@@ -196,4 +196,47 @@ public class miDB extends SQLiteOpenHelper {
         db.close();
         return returnList;
     }
+
+    // ==========================================
+    // MÉTODOS PARA ELIMINAR
+    // ==========================================
+
+    public void deleteTrip(long tripId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        // Al borrar el viaje, SQLite borrará sus maletas y objetos automáticamente gracias al CASCADE
+        db.delete("TRIPS", "id=?", new String[]{String.valueOf(tripId)});
+        db.close();
+    }
+
+    public void deleteLuggage(long luggageId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("LUGGAGE", "id=?", new String[]{String.valueOf(luggageId)});
+        db.close();
+    }
+
+    public void deleteItem(long itemId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("ITEMS", "id=?", new String[]{String.valueOf(itemId)});
+        db.close();
+    }
+
+    // ==========================================
+    // MÉTODOS PARA ACTUALIZAR (EDITAR)
+    // ==========================================
+
+    public void updateTrip(TripItem trip) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        // Preparamos los nuevos datos
+        cv.put("title", trip.getTitle());
+        cv.put("place", trip.getPlace());
+        cv.put("start_date", trip.getStartDateTimestamp());
+        cv.put("end_date", trip.getEndDateTimestamp());
+        cv.put("type", trip.getTripType());
+
+        // Actualizamos la fila donde el ID coincida
+        db.update("TRIPS", cv, "id=?", new String[]{String.valueOf(trip.getId())});
+        db.close();
+    }
 }

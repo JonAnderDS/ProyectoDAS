@@ -56,15 +56,14 @@ public class HomeFragment extends Fragment {
         checkEmptyState();
 
         // 3. Configurar el Adaptador
-        adapter = new TripAdapter(tripList);
+        adapter = new TripAdapter(tripList, () -> checkEmptyState());
         recyclerView.setAdapter(adapter);
 
-        // 4. Configurar el Floating Action Button (Si lo moviste al XML del fragmento)
+        // 4. Configurar el Floating Action Button
         FloatingActionButton fab = view.findViewById(R.id.fabAddTrip);
         if (fab != null) {
             fab.setOnClickListener(v -> {
                 showAddTripDialog();
-                // Nota: Asegúrate de adaptar showAddTripDialog para que funcione dentro del Fragment
             });
         }
     }
@@ -136,7 +135,9 @@ public class HomeFragment extends Fragment {
 
                 tripList.add(newTrip);
                 adapter.notifyItemInserted(tripList.size() - 1);
-                checkEmptyState(); // Tu método para el texto vacío
+                checkEmptyState(); // Método para el texto vacío
+
+                com.example.proyectodas.helpers.NotificationHelper.programarNotificacionesViaje(requireContext(), newTrip);
                 dialog.dismiss();
             }
         });

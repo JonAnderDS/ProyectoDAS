@@ -40,4 +40,20 @@ public class TripItem {
     public long getEndDateTimestamp() { return endDateTimestamp; }
     public String getTripType() { return tripType; }
 
+    public void setTitle(String title){
+        this.title=title;
+    }
+    public void setPlace(String place) {
+        this.place = place;
+    }
+    public void setStartDateTimestamp(long startDateTimestamp) {
+        this.startDateTimestamp = startDateTimestamp;
+    }
+    public void setEndDateTimestamp(long endDateTimestamp){
+        this.endDateTimestamp =endDateTimestamp;
+    }
+
+    public void setTripType(String tripType) {
+        this.tripType = tripType;
+    }
 }

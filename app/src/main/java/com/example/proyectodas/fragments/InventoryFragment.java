@@ -63,13 +63,13 @@ public class InventoryFragment extends Fragment {
         luggageList = db.getLuggageForTrip(tripId);
 
         // Al adaptador le pasamos "this" para que sepa si estamos en horizontal
-        adapter = new LuggageAdapter(luggageList, this);
+        adapter = new LuggageAdapter(luggageList, this, () -> checkEmptyState());
         recyclerView.setAdapter(adapter);
 
         checkEmptyState();
 
         // ----------------------------------------------------
-        // LÓGICA MODO HORIZONTAL (MASTER-DETAIL)
+        // LÓGICA MODO HORIZONTAL
         // ----------------------------------------------------
         if (view.findViewById(R.id.detail_container) != null) {
             // Si el contenedor derecho existe, cargamos el fragmento de items dentro
@@ -82,18 +82,16 @@ public class InventoryFragment extends Fragment {
 
     }
 
-    /**
-     * Muestra un diálogo para añadir un nuevo equipaje asegurando que
-     * no se cierre si el usuario deja el campo en blanco.
-     */
+     //Muestra un diálogo para añadir un nuevo equipaje asegurando que
+     //no se cierre si el usuario deja el campo en blanco.
     private void showAddLuggageDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         View view = getLayoutInflater().inflate(R.layout.dialog_add_luggage, null);
 
         EditText editLuggageName = view.findViewById(R.id.editLuggageName);
 
-        String tituloAnadir = getString(R.string.anadir); // Asegúrate de tener esto en strings.xml o pon "Añadir"
-        String cancelar = getString(R.string.cancelar); // Asegúrate de tener esto en strings.xml o pon "Cancelar"
+        String tituloAnadir = getString(R.string.anadir);
+        String cancelar = getString(R.string.cancelar);
 
         // Configuramos los botones temporalmente con 'null' para sobreescribir su comportamiento después
         builder.setView(view)
@@ -128,7 +126,7 @@ public class InventoryFragment extends Fragment {
                 adapter.notifyItemInserted(luggageList.size() - 1);
                 checkEmptyState();
 
-                // 4. Cerrar el diálogo manualmente ya que todo fue correcto
+                // 4. Cerrar el diálogo
                 dialog.dismiss();
             }
         });

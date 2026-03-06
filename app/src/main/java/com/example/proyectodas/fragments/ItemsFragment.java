@@ -76,7 +76,7 @@ public class ItemsFragment extends Fragment {
         miDB db = new miDB(requireContext());
         itemList = db.getItemsForLuggage(luggageId);
 
-        adapter = new ItemAdapter(itemList);
+        adapter = new ItemAdapter(itemList, () -> checkEmptyState());
         recyclerView.setAdapter(adapter);
 
         checkEmptyState();

@@ -28,6 +28,24 @@
     <string name="anadir_fecha_viaje">¿Cúando?</string>
     <string name="falta_info_anadir_viaje">Llena este campo</string>
 
+    <!-- Eliminar Viaje -->
+    <string name="titulo_eliminar_viaje">¿Eliminar viaje?</string>
+    <string name="mensaje_eliminar_viaje">¿Estás seguro de que quieres eliminar este viaje? También se borrarán todas sus maletas y artículos. Esta acción no se puede deshacer.</string>
+    <string name="eliminar">Eliminar</string>
+
+    <!-- Editar Viaje -->
+    <string name="editar_viaje">Editar viaje</string>
+    <string name="guardar">Guardar</string>
+
+
+    <!-- Eliminar Equipaje -->
+    <string name="titulo_eliminar_equipaje">¿Eliminar equipaje?</string>
+    <string name="mensaje_eliminar_equipaje">¿Estás seguro de que quieres eliminar este equipaje? También se borrarán todos sus artículos. Esta acción no se puede deshacer.</string>
+
+    <!-- Eliminar Articulo -->
+    <string name="titulo_eliminar_articulo">¿Eliminar artículo?</string>
+    <string name="mensaje_eliminar_articulo">¿Estás seguro de que quieres eliminar este artículo? Esta acción no se puede deshacer.</string>
+
     <!-- Ajustes -->
     <string name="dark_mode">Modo oscuro</string>
     <string name="select_language">Selecciona idioma</string>
@@ -37,4 +55,13 @@
     <string name="empty_trips">No tienes ningún viaje.\nPulsa el botón + para añadir uno.</string>
     <string name="empty_luggage">No tienes maletas para este viaje.\nPulsa el botón + para crear una.</string>
     <string name="empty_items">No hay objetos en esta maleta.\nPulsa el botón + para añadirlos.</string>
+
+    <string name="notif_titulo_pre_ida">¡Prepara tu maleta!</string>
+    <string name="notif_msg_pre_ida">Tu viaje comienza mañana. No olvides revisar tu inventario para no dejarte nada.</string>
+    <string name="notif_titulo_ida">¡Feliz Viaje!</string>
+    <string name="notif_msg_ida">El gran día ha llegado. Haz una última revisión del inventario antes de salir de casa. ¡Disfruta!</string>
+    <string name="notif_titulo_pre_vuelta">Hora de hacer las maletas</string>
+    <string name="notif_msg_pre_vuelta">Mañana es el día de regreso. Revisa el inventario para asegurar que todo vuelve contigo.</string>
+    <string name="notif_titulo_vuelta">Buen viaje de regreso</string>
+    <string name="notif_msg_vuelta">Esperamos que haya sido un viaje satisfactorio. Verifica por última vez que no olvidas nada en el hotel.</string>
 </resources>

@@ -3,8 +3,11 @@ package com.example.proyectodas.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -20,6 +23,8 @@ import com.example.proyectodas.fragments.HomeFragment;
 import com.example.proyectodas.helpers.LocaleHelper;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
+
+import java.io.FileInputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -120,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         // 1. Actualizar el nombre en el menú lateral al volver
         NavigationView navigationView = findViewById(R.id.navigationView);
         setupNavigationHeader(navigationView);
+        cargarFotoDePerfil();
     }
 
     @Override
@@ -136,6 +142,31 @@ public class MainActivity extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+        }
+    }
+
+    private void cargarFotoDePerfil() {
+        NavigationView navigationView = findViewById(R.id.navigationView);
+        if (navigationView != null) {
+            // Accedemos al header del NavigationView
+            View headerView = navigationView.getHeaderView(0);
+            ImageView ivProfilePic = headerView.findViewById(R.id.imageView);
+
+            try {
+                // Buscamos nuestro archivo guardado en la memoria privada
+                FileInputStream fis = openFileInput("profile_pic.jpg");
+                Bitmap bitmap = BitmapFactory.decodeStream(fis);
+                fis.close();
+
+                // Si existe, lo ponemos en la vista
+                if (bitmap != null) {
+                    ivProfilePic.setImageBitmap(bitmap);
+                }
+            } catch (Exception e) {
+                // Si el archivo no existe (ej. es la primera vez que abre la app),
+                // saltará aquí y simplemente dejará la imagen por defecto.
+                e.printStackTrace();
+            }
         }
     }
 }

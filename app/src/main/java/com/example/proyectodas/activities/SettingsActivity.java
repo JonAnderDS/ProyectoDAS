@@ -1,13 +1,20 @@
 package com.example.proyectodas.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,14 +29,31 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import android.net.Uri;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 
 public class SettingsActivity extends AppCompatActivity {
 
     private SharedPreferences prefs;
     private DrawerLayout drawerLayout;
+    private final ActivityResultLauncher<Intent> imagePickerLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    Uri selectedImageUri = result.getData().getData();
+                    if (selectedImageUri != null) {
+                        guardarImagenEnMemoriaInterna(selectedImageUri);
+                        cargarFotoDePerfil();
+                    }
+                }
+            }
+    );
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -112,6 +136,21 @@ public class SettingsActivity extends AppCompatActivity {
 
         TextView tvAbout = findViewById(R.id.tvAboutApp);
         tvAbout.setText(cargarInformacionApp());
+
+        Button btnChangeProfilePic = findViewById(R.id.btnChangeProfilePic);
+        android.content.SharedPreferences prefs = getSharedPreferences("MisAjustes", Context.MODE_PRIVATE);
+        boolean tieneFoto = prefs.getBoolean("tieneFotoPerfil", false); // false es el valor por defecto
+
+        if (tieneFoto) {
+            cargarFotoDePerfil();
+        }
+
+        // 2. Lanzamos el Intent Implícito al hacer clic
+        btnChangeProfilePic.setOnClickListener(v -> {
+            // Este es el intent implícito para pedir una imagen a la galería
+            Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            imagePickerLauncher.launch(i);
+        });
     }
 
     /**
@@ -170,6 +209,38 @@ public class SettingsActivity extends AppCompatActivity {
         tvHeaderName.setText(savedName);
     }
 
+    private void guardarImagenEnMemoriaInterna(Uri uri) {
+        try {
+            // Abrimos el flujo de lectura de la imagen seleccionada
+            InputStream inputStream = getContentResolver().openInputStream(uri);
+
+            // Abrimos el flujo de escritura hacia nuestra carpeta privada
+            FileOutputStream outputStream = openFileOutput("profile_pic.jpg", Context.MODE_PRIVATE);
+
+            // Copiamos los datos (bytes)
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = inputStream.read(buffer)) > 0) {
+                outputStream.write(buffer, 0, length);
+            }
+
+            // Cerramos los flujos
+            outputStream.close();
+            inputStream.close();
+
+            android.content.SharedPreferences prefs = getSharedPreferences("MisAjustes", Context.MODE_PRIVATE);
+            android.content.SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("tieneFotoPerfil", true);
+            editor.apply();
+
+            Toast.makeText(this, "Foto de perfil actualizada", Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error al guardar la imagen", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     public void onBackPressed() {
         // Si el menú está abierto, ciérralo. Si no, vuelve atrás como es habitual.
@@ -177,6 +248,31 @@ public class SettingsActivity extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+        }
+    }
+
+    private void cargarFotoDePerfil() {
+        NavigationView navigationView = findViewById(R.id.navigationView);
+        if (navigationView != null) {
+            // Accedemos al header del NavigationView
+            View headerView = navigationView.getHeaderView(0);
+            ImageView ivProfilePic = headerView.findViewById(R.id.imageView);
+
+            try {
+                // Buscamos nuestro archivo guardado en la memoria privada
+                FileInputStream fis = openFileInput("profile_pic.jpg");
+                Bitmap bitmap = BitmapFactory.decodeStream(fis);
+                fis.close();
+
+                // Si existe, lo ponemos en la vista
+                if (bitmap != null) {
+                    ivProfilePic.setImageBitmap(bitmap);
+                }
+            } catch (Exception e) {
+                // Si el archivo no existe (ej. es la primera vez que abre la app),
+                // saltará aquí y simplemente dejará la imagen por defecto.
+                e.printStackTrace();
+            }
         }
     }
 }
